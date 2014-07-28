@@ -18,5 +18,6 @@
     <dimen name="global_margin_size">10.0dip</dimen>
     <dimen name="header_tab_height">28.0dip</dimen>
      <dimen name="product_header_height">54.0dip</dimen>
+     <dimen name="menu_tab_height">48.0dip</dimen>
 
 </resources>

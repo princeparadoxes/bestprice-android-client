@@ -24,7 +24,11 @@ import java.util.ArrayList;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -46,6 +50,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private String[] mPlanetTitles;
+	static Context ctx;
 	
 	//переменные по сокету
 	String socketstatus="";
@@ -58,8 +63,10 @@ public class MainActivity extends SherlockFragmentActivity {
 	static SocketAsyncTask socketAsyncTask;
 	static ProgressDialog dialog;
 	static ArrayList<String> InpusStrings = new ArrayList<String>();
-
-
+	private LocationManager locationManager;
+	static Double lat=54.80623493407336;
+	static Double lon=73.33253860473633;
+	
 	static Socket socket;
 	//static String read;
 	static PrintWriter out;
@@ -89,24 +96,21 @@ public class MainActivity extends SherlockFragmentActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
-		// ActionBarDrawerToggle ties together the the proper interactions
-		// between the sliding drawer and the action bar app icon
-		mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
-		mDrawerLayout, /* DrawerLayout object */
-		R.drawable.ic_drawer, /* nav drawer image to replace 'Up' caret */
-		R.string.drawer_open, /* "open drawer" description for accessibility */
-		R.string.drawer_close /* "close drawer" description for accessibility */
+		
+		mDrawerToggle = new ActionBarDrawerToggle(this, 
+		mDrawerLayout, 
+		R.drawable.ic_drawer, 
+		R.string.drawer_open, 
+		R.string.drawer_close 
 		) {
 			public void onDrawerClosed(View view) {
 				getSupportActionBar().setTitle(mTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				invalidateOptionsMenu(); 
 			}
 
 			public void onDrawerOpened(View drawerView) {
 				getSupportActionBar().setTitle(mDrawerTitle);
-				invalidateOptionsMenu(); // creates call to
-											// onPrepareOptionsMenu()
+				invalidateOptionsMenu(); 
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -114,14 +118,33 @@ public class MainActivity extends SherlockFragmentActivity {
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
-		dialog = new ProgressDialog(MainActivity.this);
-	    dialog.setMessage("Подождите...");
-	    dialog.setIndeterminate(true);
-	    dialog.setCancelable(true);
-		//startSocketAsyncTask();
-		//socketAsyncTask = new SocketAsyncTask(SERVER_IP, SERVERPORT);
-		//socketAsyncTask.execute();
-	}
+		//locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+		//locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000 * 10, 10, locationListener);
+	    //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000 * 10, 10, locationListener);
+ }
+	
+
+	
+	private LocationListener locationListener = new LocationListener() {
+
+	    @Override
+	    public void onLocationChanged(Location location) {
+	      lat = location.getLatitude();
+	      lon = location.getLongitude();
+	    }
+
+	    @Override
+	    public void onProviderDisabled(String provider) {
+	    }
+
+	    @Override
+	    public void onProviderEnabled(String provider) {
+	    }
+	    
+	    @Override
+	    public void onStatusChanged(String provider, int status, Bundle extras) {
+	    }
+	  };
 	
 	@Override
 	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
@@ -163,14 +186,12 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
 		mDrawerToggle.syncState();
 	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		// Pass any configuration change to the drawer toggles
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
@@ -180,17 +201,19 @@ public class MainActivity extends SherlockFragmentActivity {
 		case 0:
 			
 			getFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
+			
 			break;
 		case 1:
 			getSupportFragmentManager().beginTransaction().add(R.id.content, PageSlidingTabStripFragment.newInstance(),	PageSlidingTabStripFragment.TAG).commit();
 			break;
 		case 2:
-			CatalogFragment catalogFragment = new CatalogFragment();
-			CatalogFragment.ctlQuary = "quary:category";
-			CatalogFragment.ctlquarytype=0;
-			getFragmentManager().beginTransaction().replace(R.id.content, catalogFragment).commit();
+			NewCatalogFragment newcatalogFragment = new NewCatalogFragment();
+			getFragmentManager().beginTransaction().replace(R.id.content, newcatalogFragment).commit();
+			
 			break;
 		case 3:
+			//Fragment fragmen = new BalloonOverlayActivity();
+			//getFragmentManager().beginTransaction().replace(R.id.content, fragmen).commit();
 			SherlockFragment settingsFragment = new SettingsFragment();
 			getSupportFragmentManager().beginTransaction().add(R.id.content, settingsFragment).commit();
 			break;	

@@ -6,13 +6,20 @@
  android:orientation="vertical"
  android:padding="10.0dip"
  android:background="@drawable/bordered_full_bg">
+ <!--<ProgressBar
+    android:id="@+id/pb"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:indeterminate="true"
+    android:indeterminateDrawable="@drawable/filter_loading_progress_bar"
+    android:indeterminateDuration="2000" />-->
 
     <TextView
         android:id="@+id/tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Адрес сервера" />
-
     <EditText
         android:id="@+id/Server"
         android:layout_width="match_parent"
@@ -21,7 +28,7 @@
 
         <requestFocus />
     </EditText>
-
+<View android:id="@+id/ss"  android:background="@color/global_border_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
 <TextView
     android:id="@+id/textView2"
     android:layout_width="wrap_content"
@@ -34,11 +41,13 @@
     android:layout_height="wrap_content"
     android:ems="10" />
 
-<Button
-	 android:id="@+id/btnOk"
-	 android:layout_width="wrap_content"
-	 android:layout_height="wrap_content"
-	 android:onClick="onClick"
-	 android:text="Применить"/>
- <include layout="@layout/progress_layout" />
+	<Button
+		 android:id="@+id/btnOk"
+		 android:layout_width="wrap_content"
+		 android:layout_height="wrap_content"
+		 android:onClick="onClick"
+		 android:text="Применить"/>
+
+      	 
+	
 </LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10.0dip"
+ 	android:background="@drawable/bordered_full_bg"> 
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+         <TextView android:id="@+id/header_tv" android:layout_marginLeft="1.0px" android:layout_marginRight="1.0px" style="@style/headerTextView" />
+         <View android:background="@color/global_border_color" android:layout_width="wrap_content" android:layout_height="1.0px" />
+         <LinearLayout android:orientation="vertical" android:id="@+id/list_category" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="1.0px" android:layout_marginRight="1.0px" />
+    </LinearLayout>
+    <ProgressBar
+    android:id="@+id/pb"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:indeterminate="true"
+    android:indeterminateDrawable="@drawable/filter_loading_progress_bar"
+    android:indeterminateDuration="2000" />
+    
+</FrameLayout>

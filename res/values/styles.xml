@@ -10,5 +10,16 @@
         <item name="android:icon">@drawable/ic_launcher_actionbar</item>
         <item name="android:background">#FF666666</item>
     </style>
+    <style name="headerTextView">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/filter_sets_main_color</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/global_content_padding</item>
+        <item name="android:paddingRight">@dimen/global_content_padding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/header_tab_height</item>
+        <item name="android:singleLine">true</item>
+    </style>
 
 </resources>
