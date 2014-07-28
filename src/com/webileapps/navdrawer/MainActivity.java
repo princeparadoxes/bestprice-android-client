@@ -50,8 +50,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private String[] mPlanetTitles;
-	static Context ctx;
-	
+	static String ctxtovar; 	
 	//переменные по сокету
 	String socketstatus="";
 	static String slushatelstatus="";
@@ -60,19 +59,20 @@ public class MainActivity extends SherlockFragmentActivity {
 	static boolean soedstatus=false;
 	static String log = new String("");
 	static int count=0;
-	static SocketAsyncTask socketAsyncTask;
 	static ProgressDialog dialog;
 	static ArrayList<String> InpusStrings = new ArrayList<String>();
 	private LocationManager locationManager;
 	static Double lat=54.80623493407336;
 	static Double lon=73.33253860473633;
-	
+	static int limit = 0;
 	static Socket socket;
+	static String subcategory = null;
 	//static String read;
 	static PrintWriter out;
 	static BufferedReader in;
 	static int SERVERPORT = 33333;
 	static String SERVER_IP = "192.168.1.101";
+	
 	
 	//дейтсвия при создании 
 	@Override
@@ -199,17 +199,18 @@ public class MainActivity extends SherlockFragmentActivity {
 		Fragment fragment = new MapFragment();
 		switch (position) {
 		case 0:
-			
 			getFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
-			
 			break;
 		case 1:
-			getSupportFragmentManager().beginTransaction().add(R.id.content, PageSlidingTabStripFragment.newInstance(),	PageSlidingTabStripFragment.TAG).commit();
+			SearchFragment searchFragment = new SearchFragment();
+			getFragmentManager().beginTransaction().replace(R.id.content, searchFragment).commit();
 			break;
+		//case 2:
+			//getSupportFragmentManager().beginTransaction().add(R.id.content, PageSlidingTabStripFragment.newInstance(),	PageSlidingTabStripFragment.TAG).commit();
+		//	break;
 		case 2:
-			NewCatalogFragment newcatalogFragment = new NewCatalogFragment();
+			CatalogFragment newcatalogFragment = new CatalogFragment();
 			getFragmentManager().beginTransaction().replace(R.id.content, newcatalogFragment).commit();
-			
 			break;
 		case 3:
 			//Fragment fragmen = new BalloonOverlayActivity();
@@ -228,11 +229,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	// Вызывается перед выходом из "полноценного" состояния.
     @Override
     public void onDestroy(){
-    	//if (socketAsyncTask == null) return;
-    	socketAsyncTask.cancel(false);
-    	//socketAsyncTask.cancel(false);
-        // Очистите все ресурсы. Это касается завершения работы
-        // потоков, закрытия соединений с базой данных и т. д.
+    	
         super.onDestroy();
     }	
     

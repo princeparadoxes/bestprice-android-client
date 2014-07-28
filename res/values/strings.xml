@@ -6,7 +6,8 @@
 
     <string-array name="planets_array">
         <item>Карта</item>
-        <item>Популярное</item>
+        <item>Поиск</item>
+        <!-- <item>Популярное</item> -->
         <item>Каталог</item>
         <item>Настройки</item>
     </string-array>

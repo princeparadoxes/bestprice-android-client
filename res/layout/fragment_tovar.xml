@@ -24,14 +24,15 @@
 	           android:paddingTop="@dimen/global_margin_half"
 	           android:text="sdbaisudfbgiusdbvf"
 	           android:textSize="19.0dip" />
-	        <TextView 
-		       android:textSize="@dimen/text_size_huge" 
-		       android:id="@+id/ProductPrices"
-		       android:paddingLeft="@dimen/global_content_padding" 
-		       android:layout_width="wrap_content" 
-		       android:layout_height="wrap_content"
-		       android:text="ProductPricesRange" />
+	       
 			<View android:background="@color/global_border_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
+         <FrameLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" >
+            <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical" >
         
 		   <TextView 
 		       android:textSize="@dimen/text_size_large" 
@@ -48,9 +49,26 @@
 		       android:paddingLeft="@dimen/global_content_padding" 
 		       android:layout_height="wrap_content"
 		       android:text="ProductOffers" />
+		   </LinearLayout>
+		   <ProgressBar
+			   android:id="@+id/pbtovar1"
+			   android:layout_width="wrap_content"
+			   android:layout_height="wrap_content"
+			   android:layout_gravity="center"
+			   android:indeterminate="true"
+			   android:indeterminateDrawable="@drawable/filter_loading_progress_bar"
+			   android:indeterminateDuration="2000" />
+		  </FrameLayout>
+		   
 		   <View android:background="@color/global_border_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
       	   <include android:id="@+id/Points" android:visibility="visible" android:layout_marginTop="10.0dip" layout="@layout/points" />
            <View android:background="@color/global_border_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
+		   
+		   
+		   <include android:id="@+id/minimalptice" android:visibility="visible" android:layout_marginTop="10.0dip" layout="@layout/minimalprice" />
+           <View android:background="@color/global_border_color" android:layout_width="fill_parent" android:layout_height="1.0px" />
+          
+           
       
     </LinearLayout>
     
