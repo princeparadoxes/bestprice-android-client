@@ -3,5 +3,20 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+     <dimen name="dialog_width">230.0dip</dimen>
+    <dimen name="image_gallery_size">160.0dip</dimen>
+    <dimen name="rating_bar_height">19.0px</dimen>
+    <dimen name="result_filter_max_width">350.0dip</dimen>
+    <dimen name="text_size_huge">24.0dip</dimen>
+    <dimen name="text_size_large">17.0dip</dimen>
+    <dimen name="text_size_medium">13.0dip</dimen>
+    <dimen name="text_size_small">11.0dip</dimen>
+    <dimen name="text_size_very_huge">27.0dip</dimen>
+    <dimen name="global_content_padding">10.0dip</dimen>
+    <dimen name="global_content_padding_with_half">15.0dip</dimen>
+    <dimen name="global_margin_half">5.0dip</dimen>
+    <dimen name="global_margin_size">10.0dip</dimen>
+    <dimen name="header_tab_height">28.0dip</dimen>
+     <dimen name="product_header_height">54.0dip</dimen>
 
 </resources>

@@ -4,7 +4,8 @@
  android:layout_width="match_parent"
  android:layout_height="match_parent"
  android:orientation="vertical"
- android:background="@drawable/background_tabs">
+ android:padding="10.0dip"
+ android:background="@drawable/bordered_full_bg">
 
     <TextView
         android:id="@+id/tv2"
@@ -39,4 +40,5 @@
 	 android:layout_height="wrap_content"
 	 android:onClick="onClick"
 	 android:text="Применить"/>
+ <include layout="@layout/progress_layout" />
 </LinearLayout>

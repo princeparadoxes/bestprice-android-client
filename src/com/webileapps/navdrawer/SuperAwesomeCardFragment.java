@@ -17,22 +17,27 @@
 package com.webileapps.navdrawer;
 
 import ru.yandex.yandexmapkit.MapController;
-import ru.yandex.yandexmapkit.MapView;
-import ru.yandex.yandexmapkit.map.MapEvent;
 import ru.yandex.yandexmapkit.map.OnMapListener;
+import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
-public class SuperAwesomeCardFragment extends SherlockFragment implements OnMapListener{
+public class SuperAwesomeCardFragment extends SherlockFragment { //implements OnMapListener{
 
 	private static final String ARG_POSITION = "position";
 
-	private int position;
+	
 
 	public static SuperAwesomeCardFragment newInstance(int position) {
 		SuperAwesomeCardFragment f = new SuperAwesomeCardFragment();
@@ -46,13 +51,13 @@ public class SuperAwesomeCardFragment extends SherlockFragment implements OnMapL
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		position = getArguments().getInt(ARG_POSITION);
+		int position = getArguments().getInt(ARG_POSITION);
 	}
 
 	 MapController mMapController;
 	    LinearLayout mView;
 	    
-	 public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	 /*public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	            Bundle savedInstanceState) {
 	        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 	        final MapView mapView = (MapView) rootView.findViewById(R.id.map);
@@ -71,10 +76,10 @@ public class SuperAwesomeCardFragment extends SherlockFragment implements OnMapL
 		public void onMapActionEvent(MapEvent arg0) {
 			// TODO Auto-generated method stub
 			
-		}
-	/*@Override
+		}*/
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+		
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 
 		FrameLayout fl = new FrameLayout(getActivity());
@@ -93,7 +98,7 @@ public class SuperAwesomeCardFragment extends SherlockFragment implements OnMapL
 		b.setLayoutParams(params);
 		b.setGravity(Gravity.LEFT);
 		b.setText("Ok");
-		 b.setOnClickListener(new OnClickListener() {
+		 /*b.setOnClickListener(new OnClickListener() {
    	      public void onClick(View v) {
    	    	MainActivity.count=MainActivity.count+1;
    	    	if(MainActivity.data.toString().equals("")==false) MainActivity.count+=100;
@@ -106,16 +111,16 @@ public class SuperAwesomeCardFragment extends SherlockFragment implements OnMapL
    			else	((TextView) v).setText("CARD " + (position + 1)); 
    	      }
    	      
-   	    });
-		 if (position==2)
-		 {
+   	    });*/
+		 //if (position==2)
+		// {
 			 
-		 }
+		// }
 		// if (position==1)	((TextView) v).setText(MainActivity.data+MainActivity.log+MainActivity.count);	
 		//	else	((TextView) v).setText("CARD " + (position + 1)); 
 
 		fl.addView(v);fl.addView(b);
 		return fl;
-	}*/
+	}
 
 }

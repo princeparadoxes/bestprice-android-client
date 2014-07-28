@@ -76,7 +76,7 @@ public class SocketAsyncTask extends AsyncTask<Void, String, Void> {
 		  String[] s = response.split("\n");
 		  for(int i=0;i<s.length;i++)
 		  {
-			  CatalogFragment.list.add(s[i]);	  
+			  //CatalogFragment.list.add(s[i]);	  
 		  }	  
 		  	  
 	  }

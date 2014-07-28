@@ -3,6 +3,7 @@ import ru.yandex.yandexmapkit.MapController;
 import ru.yandex.yandexmapkit.MapView;
 import ru.yandex.yandexmapkit.map.MapEvent;
 import ru.yandex.yandexmapkit.map.OnMapListener;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
-public class MapFragment extends SherlockFragment implements OnMapListener  {
+public class MapFragment extends Fragment implements OnMapListener  {
     public static final String ARG__NUMBER = "number";
 
     public MapFragment() {

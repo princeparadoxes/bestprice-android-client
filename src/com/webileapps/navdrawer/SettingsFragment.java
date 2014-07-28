@@ -36,16 +36,12 @@ public class SettingsFragment extends SherlockFragment {
       Server.setText(MainActivity.SERVER_IP);
       Port = (EditText) rootView.findViewById(R.id.Port);
       Port.setText(Integer.toString(MainActivity.SERVERPORT));
-      //Port.setText(getString(MainActivity.SERVERPORT));
       Ok = (Button) rootView.findViewById(R.id.btnOk);
       Ok.setOnClickListener(new OnClickListener()       {
     	  public void onClick(View v)
     	  {
     		MainActivity.SERVER_IP= Server.getText().toString();
     	    MainActivity.SERVERPORT= Integer.parseInt(Port.getText().toString());
-    	    MainActivity.socketAsyncTask.cancel(false);
-    	    MainActivity.socketAsyncTask = new SocketAsyncTask(MainActivity.SERVER_IP, MainActivity.SERVERPORT);
-    	    MainActivity.socketAsyncTask.execute();
     	  }
       });
       return rootView;

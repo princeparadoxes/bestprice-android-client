@@ -20,8 +20,10 @@ package com.webileapps.navdrawer;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -54,15 +56,17 @@ public class MainActivity extends SherlockFragmentActivity {
 	static String log = new String("");
 	static int count=0;
 	static SocketAsyncTask socketAsyncTask;
+	static ProgressDialog dialog;
+	static ArrayList<String> InpusStrings = new ArrayList<String>();
+
 
 	static Socket socket;
 	//static String read;
 	static PrintWriter out;
 	static BufferedReader in;
 	static int SERVERPORT = 33333;
-	static String SERVER_IP = "192.168.1.104";
+	static String SERVER_IP = "192.168.1.101";
 	
-
 	//дейтсвия при создании 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +114,13 @@ public class MainActivity extends SherlockFragmentActivity {
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
+		dialog = new ProgressDialog(MainActivity.this);
+	    dialog.setMessage("Подождите...");
+	    dialog.setIndeterminate(true);
+	    dialog.setCancelable(true);
 		//startSocketAsyncTask();
-		socketAsyncTask = new SocketAsyncTask(SERVER_IP, SERVERPORT);
-		socketAsyncTask.execute();
-
+		//socketAsyncTask = new SocketAsyncTask(SERVER_IP, SERVERPORT);
+		//socketAsyncTask.execute();
 	}
 	
 	@Override
@@ -167,18 +174,20 @@ public class MainActivity extends SherlockFragmentActivity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	private void selectItem(int position) {
-		SherlockFragment fragment = new MapFragment();
+	void selectItem(int position) {
+		Fragment fragment = new MapFragment();
 		switch (position) {
 		case 0:
 			
-			getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
+			getFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
 			break;
 		case 1:
 			getSupportFragmentManager().beginTransaction().add(R.id.content, PageSlidingTabStripFragment.newInstance(),	PageSlidingTabStripFragment.TAG).commit();
 			break;
 		case 2:
 			CatalogFragment catalogFragment = new CatalogFragment();
+			CatalogFragment.ctlQuary = "quary:category";
+			CatalogFragment.ctlquarytype=0;
 			getFragmentManager().beginTransaction().replace(R.id.content, catalogFragment).commit();
 			break;
 		case 3:
@@ -186,7 +195,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			getSupportFragmentManager().beginTransaction().add(R.id.content, settingsFragment).commit();
 			break;	
 		default:
-			getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
+			getFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
 			break;
 		}
 
@@ -203,6 +212,6 @@ public class MainActivity extends SherlockFragmentActivity {
         // потоков, закрытия соединений с базой данных и т. д.
         super.onDestroy();
     }	
-	
-   
+    
+    
 }

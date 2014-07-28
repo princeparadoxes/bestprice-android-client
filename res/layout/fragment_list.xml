@@ -2,7 +2,20 @@
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/listView1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" 
-    android:background="@drawable/background_tabs">
-
+    android:layout_height="fill_parent"
+    android:padding="10.0dip" 
+    android:background="@drawable/bordered_full_bg">
+<!--<TextView 
+    android:id="@+id/textView1" 
+    android:layout_marginLeft="1.0px" 
+    android:layout_marginRight="1.0px"
+    android:textSize="15.0dip"
+    android:textStyle="bold"
+    android:textColor="#ff8d8d8d"
+    android:gravity="center_vertical"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:layout_width = "wrap_content"
+    android:layout_height="28dip"
+    android:singleLine="true" />-->
 </ListView>
